@@ -120,7 +120,7 @@ const EditProfile = ({user}) => {
                         </div>
                         <textarea 
                             className="textarea" 
-                            placeholder="About" 
+                            placeholder="Skills" 
                             value={skills} 
                             onChange={(e) => setSkills(e.target.value)}
                         ></textarea>
