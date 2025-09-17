@@ -1,7 +1,7 @@
 import axios from "axios";
 import { BASE_URL } from "../utills/constants";
 import { useDispatch, useSelector } from "react-redux";
-import { addRequest } from "../utills/requestSlice";
+import { addRequest, removeRequest } from "../utills/requestSlice";
 import { useEffect } from "react";
 
 const Requests = () => {
@@ -22,9 +22,19 @@ const Requests = () => {
         fetchRequests();
     }, []);
 
+    const reviewRequest = async (status, _id) => {
+        try{
+            const res = await axios.post(BASE_URL + "/request/review/" + status + "/" + _id, {}, {withCredentials: true});
+            dispatch(removeRequest(_id));
+        }
+        catch(err) {
+            console.error(err.message);
+        };
+    };
+
     if(!requests) return;
 
-    if(requests.lenght === 0) return <h1>No Requests Found</h1>
+    if(requests.length == 0) return <h1 className="flex justify-center my-10 text-white text-3xl font-bold">No Requests Found</h1>
 
     return(
         requests && (<div className="text-center my-10">
@@ -56,8 +66,18 @@ const Requests = () => {
                             </div>
                         </div>
                         <div className="flex rounded-sm">
-                            <button className="btn btn-primary mr-2">Reject</button>
-                            <button className="btn btn-secondary">Accept</button>
+                            <button 
+                                className="btn btn-primary mr-2"
+                                onClick={() => reviewRequest("rejected", request._id)}
+                            >
+                                Reject
+                            </button>
+                            <button 
+                                className="btn btn-secondary"
+                                onClick={() => reviewRequest("accepted", request._id)}
+                            >
+                                Accept
+                            </button>
                         </div>
                     </div>)
                 })
