@@ -101,7 +101,7 @@ const Login = () => {
                         {!isLoginForm ? "Login" : "Sign Up"}
                     </button>
                 </div>
-                <p className="flex justify-center mt-4" onClick={() => setIsLoginForm((value) => !value)}>
+                <p className="flex justify-center mt-4 cursor-pointer" onClick={() => setIsLoginForm((value) => !value)}>
                     {isLoginForm ? "New User? Sign Up here" : "Exiting User? Login here"}
                 </p>
 

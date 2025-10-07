@@ -26,7 +26,7 @@ const NavBar = () => {
                     <Link to="/" className="btn btn-ghost text-xl">🧑‍💻 Dev Tinder</Link>
                 </div>
                 {user && (<div className="flex-none gap-2 flex items-center">
-                    <div className="form-control">Welcome {user.firstName}</div>
+                    <div className="form-control">Welcome, {user.firstName}</div>
                     <div className="dropdown dropdown-end mx-4">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">

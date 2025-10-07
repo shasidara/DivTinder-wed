@@ -14,7 +14,7 @@ const EditProfile = ({user}) => {
     const [about, setAbout] = useState(user.about);
     const [skills, setSkills] = useState(user.skills || " ");
     const [error, setError] = useState("");
-    const [showToast, setShowTOast] = useState(false);
+    const [showToast, setShowToast] = useState(false);
     const dispatch = useDispatch();
 
     const saveProfile = async () => {
@@ -30,9 +30,9 @@ const EditProfile = ({user}) => {
                 skills,
             },{withCredentials: true});
             dispatch(addUser(res?.data?.data));
-            setShowTOast(true);
+            setShowToast(true);
             setTimeout(() => {
-                setShowTOast(false);
+                setShowToast(false);
             },3000);
         }catch(err) {
             setError(err.response.data || "Something went wrong!!");
