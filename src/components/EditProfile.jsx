@@ -20,7 +20,7 @@ const EditProfile = ({user}) => {
     const saveProfile = async () => {
         setError("");
         try{
-            const res = await axios.patch(BASE_URL + "/profile/edit", {
+            const res = await axios.patch(BASE_URL || "http://localhost:2006" + "/profile/edit", {
                 firstName,
                 lastName,
                 photoURL,

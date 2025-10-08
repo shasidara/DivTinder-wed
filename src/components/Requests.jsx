@@ -10,7 +10,7 @@ const Requests = () => {
 
     const fetchRequests = async () => {
         try{
-            const res = await axios.get(BASE_URL + "/user/request/received", {withCredentials: true});
+            const res = await axios.get(BASE_URL || "http://localhost:2006" + "/user/request/received", {withCredentials: true});
             dispatch(addRequest(res?.data?.data));
         }
         catch(err) {
@@ -24,7 +24,7 @@ const Requests = () => {
 
     const reviewRequest = async (status, _id) => {
         try{
-            const res = await axios.post(BASE_URL + "/request/review/" + status + "/" + _id, {}, {withCredentials: true});
+            const res = await axios.post(BASE_URL || "http://localhost:2006" + "/request/review/" + status + "/" + _id, {}, {withCredentials: true});
             dispatch(removeRequest(_id));
         }
         catch(err) {

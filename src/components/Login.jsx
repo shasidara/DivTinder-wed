@@ -18,7 +18,7 @@ const Login = () => {
 
     const handleLogin = async () => {
         try{
-            const res = await axios.post(BASE_URL + "/login", {
+            const res = await axios.post(BASE_URL || "http://localhost:2006"+ "/login", {
                 email,
                 password,
             },{withCredentials: true});
@@ -31,7 +31,7 @@ const Login = () => {
 
     const handleSignUp = async () => {
         try{
-            const res = await axios.post(BASE_URL + "/signup", {
+            const res = await axios.post(BASE_URL || "http://localhost:2006" + "/signup", {
                 firstName,
                 lastName,
                 email,
