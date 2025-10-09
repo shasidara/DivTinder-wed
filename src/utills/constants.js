@@ -1,1 +1,1 @@
-export const BASE_URL = "https://devconnection.netlify.app/";
+export const BASE_URL = "htpps://dev-tinder-backend-62i1.onrender.com";
